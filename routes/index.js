@@ -16,7 +16,6 @@ router.use('/users', auth, require('./users'));
 router.use('/movies', auth, require('./movies'));
 
 router.use('*', (req) => {
-    console.log(req)
   throw new NotFoundError('Запрашиваемый ресурс не найден');
 });
 //
