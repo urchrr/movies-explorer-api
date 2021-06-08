@@ -25,7 +25,8 @@ node_modules
 .idea
 .vscode
 .utils
-
+.env
+env
 .vs
 .prettierrc.js
 request.log
