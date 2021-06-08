@@ -15,7 +15,8 @@ router.post('/signup', express.json(), signUpValidation(), createUser);
 router.use('/users', auth, require('./users'));
 router.use('/movies', auth, require('./movies'));
 
-router.use('*', () => {
+router.use('*', (req) => {
+    console.log(req)
   throw new NotFoundError('Запрашиваемый ресурс не найден');
 });
 //
