@@ -22,12 +22,12 @@ const validLink = Joi.string().required()
     }
     throw new InvalidDataError('Невалидная ссылка');
   });
-const year = Joi.string().required().min(4).max(4);
+const year = Joi.string().required().length(4);
 const description = Joi.string().required().min(2).max(200);
 const nameRU = Joi.string().required().min(2).max(50)
-  .regex(/^[А-ЯЁ][а-яё]+$/);
+  .regex(/^[А-ЯЁа-яё\s\d-–:\.,?]+$/);
 const nameEN = Joi.string().required().min(2).max(50)
-  .regex(/^[a-zA-Z]+$/);
+  .regex(/^[a-zA-Z\s\d-–:\.,?]+$/);
 const movieId = Joi.number().required().min(1);
 const thumbnail = validLink;
 const trailer = validLink;
@@ -51,6 +51,7 @@ module.exports.signInValidation = () => celebrate({
 module.exports.patchUserValidation = () => celebrate({
   body: Joi.object().keys({
     name,
+    email
   }),
 });
 
@@ -72,6 +73,6 @@ module.exports.postMovieValidation = () => celebrate({
 
 module.exports.idMovieValidation = () => celebrate({
   params: Joi.object().keys({
-    _id: Joi.string().required().hex().min(24),
+    _id: Joi.string().required().hex().length(24),
   }),
 });
