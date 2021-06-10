@@ -2,4 +2,4 @@
 Бэкэнд-часть дипломного проекта
 
 # Домен бэкенда
-https://movies-explorer.urchrr.ru/api
+https://movie-explorer.urchrr.ru/api
