@@ -10,9 +10,9 @@ const password = Joi.string()
   .required()
   .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'));
 
-const name = Joi.string().required().min(2).max(30);
-const country = Joi.string().required().min(2).max(30);
-const director = Joi.string().required().min(2).max(30);
+const name = Joi.string().required().min(2).max(100);
+const country = Joi.string().required().min(2).max(100);
+const director = Joi.string().required().min(2).max(100);
 const duration = Joi.number().required().integer().min(2);
 const validLink = Joi.string().required()
   .custom((value, helpers) => {
@@ -23,11 +23,11 @@ const validLink = Joi.string().required()
     throw new InvalidDataError('Невалидная ссылка');
   });
 const year = Joi.string().required().length(4);
-const description = Joi.string().required().min(2).max(200);
-const nameRU = Joi.string().required().min(2).max(50)
-  .regex(/^[А-ЯЁа-яё\s\d-–:\.,?]+$/);
-const nameEN = Joi.string().required().min(2).max(50)
-  .regex(/^[a-zA-Z\s\d-–:\.,?]+$/);
+const description = Joi.string().required().min(2).max(5000);
+const nameRU = Joi.string().required().min(2).max(100)
+  .regex(/^[a-zA-ZА-ЯЁа-яё\s\d-–:\.,?«»`'&:!’\-—*]+$/);
+const nameEN = Joi.string().required().min(2).max(100)
+  .regex(/^[a-zA-Z\s\d-–:\.,?«»`'&:!’\-Х—*äöüßÄÖÜ]+$/);
 const movieId = Joi.number().required().min(1);
 const thumbnail = validLink;
 const trailer = validLink;
